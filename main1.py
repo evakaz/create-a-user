@@ -76,6 +76,7 @@ password_confirmation = ask_confirmation()
 list = [username, email, password]
 print('List: ' + str(list)) 
 
+#writes the list in a text file 'data"
 with open('data.txt', 'w') as f:
     for data in list: 
         f.write('%s\n' % data)
