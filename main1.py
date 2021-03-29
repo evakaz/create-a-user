@@ -1,14 +1,13 @@
 import re
 
 def check_username(username):
-    if len(username) > 3 and len(username) <= 8:
-        return True
-    elif len(username) <= 3:
+    if len(username) <= 3:
         print('The username is too short, please create a new username.')
         return False
-    elif len(username) >= 9:
+    if len(username) >= 9:
         print('The username is too long, please create a new username.')
         return False
+    return True
 
 def ask_username():
     while True:
@@ -20,9 +19,8 @@ def check_email(email):
     regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
     if re.search(regex, email):
         return True
-    else:
-        print('Please enter a valid email: ')
-        return False
+    print('Please enter a valid email: ')
+    return False
 
 def ask_email():
     while True:
@@ -46,8 +44,7 @@ def check_password(password):
     if re.search(symbols, password) is None:
         print('The password does not containt special symbols.')
         return False
-    else:
-        return True
+    return True
 
 def ask_password():
     while True:
@@ -56,11 +53,10 @@ def ask_password():
             return password
 
 def check_match(password_confirmation):
-    if password == password_confirmation:
-        return True
     if password != password_confirmation:
         print('The passwords do not match.')
         return False
+    return True
 
 def ask_confirmation():
     while True:
@@ -76,8 +72,8 @@ password_confirmation = ask_confirmation()
 list = [username, email, password]
 print('List: ' + str(list)) 
 
-#writes the list in a text file 'data"
-with open('data.txt', 'w') as f:
+with open('data.txt', 'a') as f:
+    f.write('User: \n')
     for data in list: 
         f.write('%s\n' % data)
 
